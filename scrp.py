@@ -37,10 +37,17 @@ if statusCode == 200:
         i+=1
         if i==1000:
              break
-    file = open("filename", "w")
-    output = {"stuff": data}
-    json.dump(output, file)
-    file.close()
+    myfile = open("filename", "w")
+    #output = {"stuff": data}
+    #json.dump(output, file)
+    myfile.write('[')
+    i =0
+    for item in data:
+        myfile.write('"'+ item.encode('utf8')+'",')
+        #i+=1
+        #if i==500: break
+    myfile.write(']')
+    myfile.close()
 
     sys.exit()
 
